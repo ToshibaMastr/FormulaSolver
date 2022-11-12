@@ -7,6 +7,6 @@ import java.util.List;
 @Service
 public interface FormulaSolverService {
 
-    String calculateFormula(String string);
+    Float calculateFormula(String string);
 
 }

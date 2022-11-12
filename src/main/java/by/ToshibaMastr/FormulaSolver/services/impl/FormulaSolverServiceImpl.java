@@ -10,7 +10,7 @@ import java.util.*;
 public class FormulaSolverServiceImpl implements FormulaSolverService {
 
     @Override
-    public String calculateFormula(String string) {
+    public Float calculateFormula(String string) {
 
         List<String> encodeStr = new ArrayList<>();
         Stack<Character> operatorStack = new Stack<>();
@@ -33,8 +33,6 @@ public class FormulaSolverServiceImpl implements FormulaSolverService {
                     operatorStack.add(firstChar);
                 }
             }
-            System.out.println(encodeStr);
-            System.out.println(operatorStack.toString());
         }
         while(!operatorStack.isEmpty()){
             encodeStr.add(Character.toString(operatorStack.pop()));
@@ -44,7 +42,6 @@ public class FormulaSolverServiceImpl implements FormulaSolverService {
         for(int i = 0; encodeStr.size()!=1; i++){
             firstChar = encodeStr.get(i).charAt(0);
             if(!Character.isDigit(firstChar) && level(firstChar)!=-1){
-                System.out.println(encodeStr);
                 i-=2;
                 num1 = Float.valueOf(encodeStr.remove(i));
                 num2 = Float.valueOf(encodeStr.remove(i));
@@ -53,7 +50,7 @@ public class FormulaSolverServiceImpl implements FormulaSolverService {
             }
         }
 
-        return encodeStr.get(0);
+        return Float.valueOf(encodeStr.get(0));
     }
     private int level(char operand){
         switch (operand){

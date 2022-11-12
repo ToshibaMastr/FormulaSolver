@@ -14,7 +14,7 @@ public class rController {
     private FormulaSolverService formulaSolverService;
 
     @GetMapping()
-    public String solve(@RequestParam("Formula") String string, Model model){
+    public Float solve(@RequestParam("Formula") String string, Model model){
         return formulaSolverService.calculateFormula(string);
     }
 }
