@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> FormulaSolver </title>
+</head>
+
+<body>
+    ToshibaMastr FormulaSolver-0.1-Beta
+</body>
+<br>
+<form th:method="POST" th:action="${url}" action="/">
+    <label for="Formula">Formula: </label>
+    <input name="Formula" type="text" id="formula" th:value="${input}"/>
+    <input type="submit" value="solve"/>
+</form>
+<body>
+    <td th:text="${output}"></td>
+</body>
+<body>
+
+</body>
