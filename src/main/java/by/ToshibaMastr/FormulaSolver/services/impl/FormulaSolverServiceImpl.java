@@ -27,12 +27,14 @@ public class FormulaSolverServiceImpl implements FormulaSolverService {
                     }
                     operatorStack.pop();
                 } else {
-                    if (operatorStack.size() != 0 && operatorStack.peek() != '(' && level(firstChar) <= level(operatorStack.peek())) {
+                    while (operatorStack.size() != 0 && operatorStack.peek() != '(' && level(firstChar) <= level(operatorStack.peek())) {
                         encodeStr.add(Character.toString(operatorStack.pop()));
                     }
                     operatorStack.add(firstChar);
                 }
             }
+            System.out.println(encodeStr);
+            System.out.println(operatorStack.toString());
         }
         while(!operatorStack.isEmpty()){
             encodeStr.add(Character.toString(operatorStack.pop()));
@@ -42,6 +44,7 @@ public class FormulaSolverServiceImpl implements FormulaSolverService {
         for(int i = 0; encodeStr.size()!=1; i++){
             firstChar = encodeStr.get(i).charAt(0);
             if(!Character.isDigit(firstChar) && level(firstChar)!=-1){
+                System.out.println(encodeStr);
                 i-=2;
                 num1 = Float.valueOf(encodeStr.remove(i));
                 num2 = Float.valueOf(encodeStr.remove(i));
@@ -76,24 +79,6 @@ public class FormulaSolverServiceImpl implements FormulaSolverService {
     }
 
     private List<String> formulaSplit(String string){
-        List<String> splitFormula = new ArrayList<>();
-        StringBuilder tempString = new StringBuilder();
-
-        for(Character i : string.toCharArray()){
-            if(i == '(' || i == ')'){
-                splitFormula.add(i.toString());
-                tempString.delete(0,tempString.length());
-            }
-            else
-            if(i == ' '){
-                splitFormula.add(tempString.toString());
-                tempString.delete(0,tempString.length());
-            }
-            else{
-                tempString.append(i);
-            }
-        }
-
         return List.of(string.split(" "));
     }
 

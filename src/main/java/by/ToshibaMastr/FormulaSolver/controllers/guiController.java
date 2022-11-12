@@ -26,7 +26,7 @@ public class guiController {
     public String solve(@RequestParam("Formula") String string, Model model){
         model.addAttribute("output", string + " = " + formulaSolverService.calculateFormula(string));
         model.addAttribute("input", string);
-        model.addAttribute("url", MAIN_PAGE);
+        model.addAttribute("url", "/gui");
         return MAIN_PAGE;
     }
 }
