@@ -2,7 +2,7 @@
 
 - **gui** > localhost:8082/gui/
 
-- **rest** > localhost:8082/?Formula=... > **Float**
+- **rest** > localhost:8082/?Formula=... > **String**
 
 - Все числа и знаки должны быть разделены **пробелом**
 
